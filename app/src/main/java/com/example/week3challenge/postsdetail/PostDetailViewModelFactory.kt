@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.week3challenge.networking.Posts
-
+/*
 class PostDetailViewModelFactory(private val posts: Posts, private val application: Application) :
     ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
@@ -15,3 +15,4 @@ class PostDetailViewModelFactory(private val posts: Posts, private val applicati
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+*/

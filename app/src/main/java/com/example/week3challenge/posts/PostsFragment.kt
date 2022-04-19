@@ -7,26 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.week3challenge.R
+import com.example.week3challenge.databinding.PostsFragmentBinding
 
 class PostsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PostsFragment()
-    }
-
-    private lateinit var viewModel: PostsViewModel
-
+private val viewModel:PostsViewModel by lazy{
+    ViewModelProvider(this)[PostsViewModel::class.java]
+}
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.posts_fragment, container, false)
+    ): View {
+        val binding=PostsFragmentBinding.inflate(inflater)
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+
+        // Giving the binding access to the OverviewViewModel
+        binding.viewModel = viewModel
+
+        return binding.root
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PostsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
