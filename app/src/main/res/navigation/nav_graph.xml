@@ -1,0 +1,24 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/postsFragment">
+
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.example.week3challenge.posts.PostsFragment"
+        android:label="fragment_overview"
+        tools:layout="@layout/posts_fragment" >
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.week3challenge.postsdetail.PostDetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/post_detail_fragment">
+    </fragment>
+
+</navigation>
