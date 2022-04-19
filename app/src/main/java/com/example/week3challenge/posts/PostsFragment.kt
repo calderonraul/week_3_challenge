@@ -24,6 +24,8 @@ private val viewModel:PostsViewModel by lazy{
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
+        binding.recycler.adapter=PostsAdapter()
+
         return binding.root
 
     }
