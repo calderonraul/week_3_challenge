@@ -3,6 +3,7 @@ package com.example.week3challenge.posts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.networking.PostsApi
 import retrofit2.Response
 import retrofit2.Call
@@ -20,14 +21,15 @@ class PostsViewModel : ViewModel() {
     }
 
     private fun getPosts() {
-        PostsApi.retrofitService.getProperties().enqueue(object: Callback<String> {
-            override fun onFailure(call: Call<String>, t: Throwable) {
+        PostsApi.retrofitService.getProperties().enqueue(object: Callback<List<Posts>> {
+            override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
+                _response.value = "Success: ${response.body()?.size} posts retrieved"
+            }
+
+            override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
                 _response.value = "Failure: " + t.message
             }
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                _response.value = response.body()
-            }
         })
     }
 }

@@ -1,4 +1,9 @@
 package com.example.week3challenge.networking
 
-class Posts {
+data class Posts(
+    val userId: Int,
+    val id: Int,
+    val title: String,
+    val body: String
+) {
 }
