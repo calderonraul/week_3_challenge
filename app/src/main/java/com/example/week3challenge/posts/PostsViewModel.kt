@@ -8,9 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.networking.PostsApi
 import kotlinx.coroutines.launch
-import retrofit2.Response
-import retrofit2.Call
-import retrofit2.Callback
 
 class PostsViewModel : ViewModel() {
     // The internal MutableLiveData String that stores the most recent response status
@@ -28,6 +25,13 @@ class PostsViewModel : ViewModel() {
     val posties: LiveData<List<Posts>>
         get() = _postinfo
 
+    private val _navigateToSelectedPost = MutableLiveData<Posts>()
+
+    // The external immutable LiveData for the navigation property
+    val navigateToSelectedPost: LiveData<Posts>
+        get() = _navigateToSelectedPost
+
+
     init {
         getPosts()
     }
@@ -35,9 +39,9 @@ class PostsViewModel : ViewModel() {
     private fun getPosts() {
         viewModelScope.launch {
             try {
-                val listResult = PostsApi.retrofitService.getProperties()
+                val listResult = PostsApi.retrofitService.getPosts()
                 Log.wtf("ravn",listResult.toString())
-                _status.value = "Success: ${listResult.size} Mars properties retrieved"
+                _status.value = "Success: ${listResult.size} posts retrieved"
                 if (listResult.isNotEmpty()) {
                     _postinfo.value = listResult
                 }
@@ -46,5 +50,18 @@ class PostsViewModel : ViewModel() {
                 Log.wtf("ravn",e.message)
             }
         }
+    }
+
+
+
+    fun displayPostComments(post: Posts) {
+        _navigateToSelectedPost.value = post
+    }
+
+    /**
+     * After the navigation has taken place, make sure navigateToSelectedProperty is set to null
+     */
+    fun displayPostDetailsComplete() {
+        //_navigateToSelectedPost.value =null
     }
 }

@@ -1,7 +1,10 @@
 package com.example.week3challenge.posts
 
+import android.app.Activity
+import android.content.SharedPreferences
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.leanback.widget.DiffCallback
@@ -12,7 +15,8 @@ import com.example.week3challenge.databinding.PostsAdapterBinding
 import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.posts.PostsAdapter.PostViewHolder
 
-class PostsAdapter() :ListAdapter<Posts, PostViewHolder> (DiffCallback) {
+class PostsAdapter(val onClickListener: OnClickListener) :ListAdapter<Posts, PostViewHolder> (DiffCallback) {
+
 
     class PostViewHolder (private val binding: PostsAdapterBinding):RecyclerView.ViewHolder(binding.root){
 
@@ -23,12 +27,27 @@ class PostsAdapter() :ListAdapter<Posts, PostViewHolder> (DiffCallback) {
 
     }
 
+    class OnClickListener(val clickListener: (post:Posts)->Unit){
+        fun onClick(posts: Posts)=clickListener(posts)
+    }
+
+
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         return PostViewHolder(PostsAdapterBinding.inflate(LayoutInflater.from(parent.context)))
+
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val posts=getItem(position)
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(posts)
+
+
+        }
+
         holder.bind(posts)
     }
 
