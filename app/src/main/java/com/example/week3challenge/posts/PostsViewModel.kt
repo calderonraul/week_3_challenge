@@ -35,7 +35,7 @@ class PostsViewModel : ViewModel() {
     private fun getPosts() {
         viewModelScope.launch {
             try {
-                var listResult = PostsApi.retrofitService.getProperties()
+                val listResult = PostsApi.retrofitService.getProperties()
                 Log.wtf("ravn",listResult.toString())
                 _status.value = "Success: ${listResult.size} Mars properties retrieved"
                 if (listResult.isNotEmpty()) {

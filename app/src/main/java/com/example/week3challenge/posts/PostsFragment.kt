@@ -12,7 +12,7 @@ import com.example.week3challenge.databinding.PostsFragmentBinding
 class PostsFragment : Fragment() {
 
 private val viewModel:PostsViewModel by lazy{
-    ViewModelProvider(this)[PostsViewModel::class.java]
+    ViewModelProvider(this).get(PostsViewModel::class.java)
 }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

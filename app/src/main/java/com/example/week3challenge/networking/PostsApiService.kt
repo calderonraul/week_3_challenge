@@ -24,7 +24,7 @@ private val retrofit = Retrofit.Builder()
 interface PostsApiService {
 
     @GET("posts")
-    fun getProperties(): List<Posts>
+    suspend fun getProperties(): List<Posts>
 }
 object PostsApi {
     val retrofitService : PostsApiService by lazy { retrofit.create(PostsApiService::class.java) }
