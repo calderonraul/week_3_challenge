@@ -15,10 +15,15 @@
     </fragment>
 
     <fragment
+
+
         android:id="@+id/detailFragment"
         android:name="com.example.week3challenge.postsdetail.PostDetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/post_detail_fragment">
+        <argument
+            android:name="selectedPost"
+            app:argType="com.example.week3challenge.networking.Posts"/>
     </fragment>
 
 </navigation>

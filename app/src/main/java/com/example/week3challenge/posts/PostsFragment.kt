@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.week3challenge.R
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.week3challenge.databinding.PostsFragmentBinding
 
 class PostsFragment : Fragment() {
@@ -37,7 +38,14 @@ private val viewModel:PostsViewModel by lazy{
             editor.apply()
             Log.wtf("ravnn","guarde el id"+it.id.toString())
 
-
+        })
+        viewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                // Must find the NavController from the Fragment
+               this.findNavController().navigate(PostsFragmentDirections.actionShowDetail(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.displayPostDetailsComplete()
+            }
         })
 
         return binding.root

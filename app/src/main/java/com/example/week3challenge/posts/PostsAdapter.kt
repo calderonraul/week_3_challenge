@@ -1,13 +1,7 @@
 package com.example.week3challenge.posts
 
-import android.app.Activity
-import android.content.SharedPreferences
-import android.os.Parcel
-import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.leanback.widget.DiffCallback
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView

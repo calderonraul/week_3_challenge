@@ -1,5 +1,6 @@
 package com.example.week3challenge.posts
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +10,7 @@ import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.networking.PostsApi
 import kotlinx.coroutines.launch
 
-class PostsViewModel : ViewModel() {
+class   PostsViewModel : ViewModel() {
     // The internal MutableLiveData String that stores the most recent response status
     private val _status = MutableLiveData<String>()
 
@@ -61,7 +62,8 @@ class PostsViewModel : ViewModel() {
     /**
      * After the navigation has taken place, make sure navigateToSelectedProperty is set to null
      */
+    @SuppressLint("NullSafeMutableLiveData")
     fun displayPostDetailsComplete() {
-        //_navigateToSelectedPost.value =null
+        _navigateToSelectedPost.value =null
     }
 }
