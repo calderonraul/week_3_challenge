@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/rauli/AndroidStudioProjects/week_3_challenge/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/rauli/AndroidStudioProjects/week_3_challenge/app/src/main/res/layout/post_detail_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/rauli/AndroidStudioProjects/week_3_challenge/app/src/main/res/layout/posts_adapter.xml" value="0.36666666666666664" />

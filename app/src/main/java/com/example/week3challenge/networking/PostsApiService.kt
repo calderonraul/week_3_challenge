@@ -28,8 +28,8 @@ interface PostsApiService {
     @GET("posts")
     suspend fun getPosts(): List<Posts>
 
-    @GET("comments?postId={id}")
-    suspend fun getPostDetail(@Path("id") id: Int?): List<Comments>
+    @GET("comments")
+    suspend fun getPostDetail(@Query("postId") id: Int?): List<Comments>
 
 
 }

@@ -34,7 +34,7 @@ private val viewModel:PostsViewModel by lazy{
         binding.recycler.adapter=PostsAdapter(PostsAdapter.OnClickListener{
             viewModel.displayPostComments(it)
             val editor=sharedPreferences.edit()
-            editor.putString("id",it.id.toString())
+            editor.putInt("id",it.id)
             editor.apply()
             Log.wtf("ravnn","guarde el id"+it.id.toString())
 

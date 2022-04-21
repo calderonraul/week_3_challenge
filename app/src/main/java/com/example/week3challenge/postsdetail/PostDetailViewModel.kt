@@ -8,7 +8,7 @@ import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.networking.PostsApi
 import kotlinx.coroutines.launch
 
-class PostDetailViewModel(comments: Comments, app: Application,aux: Int) : AndroidViewModel(app) {
+class PostDetailViewModel(aux: Int) : ViewModel() {
 
     private val _selectedComment = MutableLiveData<List<Comments>>()
 
