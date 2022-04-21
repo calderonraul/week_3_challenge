@@ -15,21 +15,22 @@ class PostDetailViewModel(aux: Int) : ViewModel() {
     val selectedPost: LiveData<List<Comments>>
         get() = _selectedComment
 
-init {
-    getComments(aux)
-}
-    private fun getComments(aux : Int) {
+    init {
+        getComments(aux)
+    }
+
+    private fun getComments(aux: Int) {
         viewModelScope.launch {
             try {
                 val listResult = PostsApi.retrofitService.getPostDetail(aux)
-                Log.wtf("ravn",listResult.toString())
+                Log.wtf("ravn", listResult.toString())
                 //_status.value = "Success: ${listResult.size} posts retrieved"
                 if (listResult.isNotEmpty()) {
                     _selectedComment.value = listResult
                 }
             } catch (e: Exception) {
                 //_status.value = "Failure: ${e.message}"
-                Log.wtf("ravn",e.message)
+                Log.wtf("ravn", e.message)
             }
         }
     }

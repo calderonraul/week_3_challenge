@@ -15,7 +15,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Posts>?) {
 }
 
 @BindingAdapter("commentAdapter")
-fun bindRecyclerView2(recyclerView: RecyclerView,data: List<Comments>?){
-    val adapter=recyclerView.adapter as PostsDetailsAdapter
+fun bindRecyclerView2(recyclerView: RecyclerView, data: List<Comments>?) {
+    val adapter = recyclerView.adapter as PostsDetailsAdapter
     adapter.submitList(data)
 }

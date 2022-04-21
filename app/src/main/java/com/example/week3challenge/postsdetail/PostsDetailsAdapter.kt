@@ -10,11 +10,13 @@ import com.example.week3challenge.databinding.CommentsAdapterBinding
 import com.example.week3challenge.networking.Comments
 
 
-class PostsDetailsAdapter() :ListAdapter<Comments, PostsDetailsAdapter.CommentViewHolder> (DiffCallback){
+class PostsDetailsAdapter() :
+    ListAdapter<Comments, PostsDetailsAdapter.CommentViewHolder>(DiffCallback) {
 
-    class CommentViewHolder(private val binding: CommentsAdapterBinding):RecyclerView.ViewHolder(binding.root){
+    class CommentViewHolder(private val binding: CommentsAdapterBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(comments: Comments) {
-            binding.comments=comments
+            binding.comments = comments
             binding.executePendingBindings()
 
         }
@@ -25,7 +27,7 @@ class PostsDetailsAdapter() :ListAdapter<Comments, PostsDetailsAdapter.CommentVi
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        val comments=getItem(position)
+        val comments = getItem(position)
 
         holder.bind(comments)
     }

@@ -13,24 +13,29 @@ import com.example.week3challenge.databinding.PostDetailFragmentBinding
 
 
 class PostDetailFragment : Fragment() {
-    private val viewModel:PostDetailViewModel by lazy{
+    private val viewModel: PostDetailViewModel by lazy {
         ViewModelProvider(this).get(PostDetailViewModel::class.java)
     }
     lateinit var sharedPreferences: SharedPreferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View{
-        sharedPreferences= requireContext().getSharedPreferences("mySP", Activity.MODE_PRIVATE)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        sharedPreferences = requireContext().getSharedPreferences("mySP", Activity.MODE_PRIVATE)
 
         val binding = PostDetailFragmentBinding.inflate(inflater)
 
 
         binding.lifecycleOwner = this
-        binding.viewModel = ViewModelProvider(this,PostDetailViewModelFactory(sharedPreferences.getInt("id",0)))[PostDetailViewModel::class.java]
+        binding.viewModel = ViewModelProvider(
+            this,
+            PostDetailViewModelFactory(sharedPreferences.getInt("id", 0))
+        )[PostDetailViewModel::class.java]
 
 
 
-        binding.recycler2.adapter=PostsDetailsAdapter()
+        binding.recycler2.adapter = PostsDetailsAdapter()
 
 
         return binding.root

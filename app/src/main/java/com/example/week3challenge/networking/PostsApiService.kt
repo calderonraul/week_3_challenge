@@ -22,7 +22,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 
-
 interface PostsApiService {
 
     @GET("posts")
@@ -33,6 +32,7 @@ interface PostsApiService {
 
 
 }
+
 object PostsApi {
-    val retrofitService : PostsApiService by lazy { retrofit.create(PostsApiService::class.java) }
+    val retrofitService: PostsApiService by lazy { retrofit.create(PostsApiService::class.java) }
 }

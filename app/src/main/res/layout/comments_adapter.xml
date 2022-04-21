@@ -12,9 +12,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:elevation="8dp"
-        app:cardCornerRadius="8dp">
+        android:layout_margin="10dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
 
 
@@ -41,6 +44,7 @@
                     android:id="@+id/IDTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
                     android:text="@{Integer.toString(comments.id)}"
                     android:layout_weight="1">
                 </TextView>
@@ -54,7 +58,8 @@
                     android:id="@+id/commentMailTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
                     android:text="@{comments.email}"
                     android:layout_weight="1">
                 </TextView>

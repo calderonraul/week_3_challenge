@@ -9,23 +9,23 @@ import com.example.week3challenge.databinding.PostsAdapterBinding
 import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.posts.PostsAdapter.PostViewHolder
 
-class PostsAdapter(val onClickListener: OnClickListener) :ListAdapter<Posts, PostViewHolder> (DiffCallback) {
+class PostsAdapter(val onClickListener: OnClickListener) :
+    ListAdapter<Posts, PostViewHolder>(DiffCallback) {
 
 
-    class PostViewHolder (private val binding: PostsAdapterBinding):RecyclerView.ViewHolder(binding.root){
+    class PostViewHolder(private val binding: PostsAdapterBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(posts: Posts){
-            binding.posts=posts
+        fun bind(posts: Posts) {
+            binding.posts = posts
             binding.executePendingBindings()
         }
 
     }
 
-    class OnClickListener(val clickListener: (post:Posts)->Unit){
-        fun onClick(posts: Posts)=clickListener(posts)
+    class OnClickListener(val clickListener: (post: Posts) -> Unit) {
+        fun onClick(posts: Posts) = clickListener(posts)
     }
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -34,7 +34,7 @@ class PostsAdapter(val onClickListener: OnClickListener) :ListAdapter<Posts, Pos
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val posts=getItem(position)
+        val posts = getItem(position)
 
         holder.itemView.setOnClickListener {
             onClickListener.onClick(posts)

@@ -16,34 +16,36 @@ import com.example.week3challenge.databinding.PostsFragmentBinding
 class PostsFragment : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
 
-private val viewModel:PostsViewModel by lazy{
-    ViewModelProvider(this).get(PostsViewModel::class.java)
-}
+    private val viewModel: PostsViewModel by lazy {
+        ViewModelProvider(this).get(PostsViewModel::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View {
-        val binding=PostsFragmentBinding.inflate(inflater)
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        val binding = PostsFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        sharedPreferences= requireContext().getSharedPreferences("mySP",Activity.MODE_PRIVATE)
-        // Giving the binding access to the OverviewViewModel
-        binding.viewModel = viewModel
+        sharedPreferences = requireContext().getSharedPreferences("mySP", Activity.MODE_PRIVATE)
 
-        binding.recycler.adapter=PostsAdapter(PostsAdapter.OnClickListener{
+
+        val modelfactory = PostsViewModelFactory(requireActivity().application);
+
+
+        binding.viewModel = ViewModelProvider(this, modelfactory).get(PostsViewModel::class.java)
+
+        binding.recycler.adapter = PostsAdapter(PostsAdapter.OnClickListener {
             viewModel.displayPostComments(it)
-            val editor=sharedPreferences.edit()
-            editor.putInt("id",it.id)
+            val editor = sharedPreferences.edit()
+            editor.putInt("id", it.id)
             editor.apply()
-            Log.wtf("ravnn","guarde el id"+it.id.toString())
+            Log.wtf("ravnn", "guarde el id" + it.id.toString())
 
         })
         viewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
-            if ( null != it ) {
-                // Must find the NavController from the Fragment
-               this.findNavController().navigate(PostsFragmentDirections.actionShowDetail(it))
-                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+            if (null != it) {
+                this.findNavController().navigate(PostsFragmentDirections.actionShowDetail(it))
                 viewModel.displayPostDetailsComplete()
             }
         })
@@ -51,7 +53,6 @@ private val viewModel:PostsViewModel by lazy{
         return binding.root
 
     }
-
 
 
 }
