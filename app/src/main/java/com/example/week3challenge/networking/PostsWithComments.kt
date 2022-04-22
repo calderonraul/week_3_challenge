@@ -3,7 +3,7 @@ package com.example.week3challenge.networking
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class PostsWithComments(
+/*data class PostsWithComments(
     @Embedded val post: Posts,
     @Relation(
         parentColumn = "post_id",
@@ -12,3 +12,4 @@ data class PostsWithComments(
     val comments: List<Comments>
 )
 
+*/
