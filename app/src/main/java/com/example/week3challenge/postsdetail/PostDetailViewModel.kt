@@ -30,7 +30,7 @@ class PostDetailViewModel(aux: Int, application: Application) : ViewModel() {
                 //_status.value = "Success: ${listResult.size} posts retrieved"
                 if (listResult.isNotEmpty()) {
                     _selectedComment.value = listResult
-                    for (item in listResult){
+                    for (item in listResult) {
                         db.postsDatabase.insert(item)
                     }
                 }

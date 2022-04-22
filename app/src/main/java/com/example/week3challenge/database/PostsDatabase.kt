@@ -8,7 +8,7 @@ import com.example.week3challenge.networking.Comments
 import com.example.week3challenge.networking.Posts
 
 
-@Database(entities = [Posts::class,Comments::class], version = 1, exportSchema = false)
+@Database(entities = [Posts::class, Comments::class], version = 1, exportSchema = false)
 abstract class PostsDatabase : RoomDatabase() {
 
     abstract val postsDatabase: PostsDAO

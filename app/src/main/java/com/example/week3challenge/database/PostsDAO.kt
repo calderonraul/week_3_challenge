@@ -3,6 +3,7 @@ package com.example.week3challenge.database
 import androidx.room.*
 import com.example.week3challenge.networking.Comments
 import com.example.week3challenge.networking.Posts
+import com.example.week3challenge.networking.PostsWithComments
 
 @Dao
 interface PostsDAO {
@@ -25,5 +26,8 @@ interface PostsDAO {
     @Update
     fun update(comments: Comments)
 
+    @Transaction
+    @Query("SELECT * FROM comments_table")
+    fun getUsersWithPlaylists(): List<PostsWithComments>
 
 }
