@@ -1,6 +1,7 @@
 package com.example.week3challenge.database
 
 import androidx.room.*
+import com.example.week3challenge.networking.Comments
 import com.example.week3challenge.networking.Posts
 
 @Dao
@@ -17,6 +18,12 @@ interface PostsDAO {
 
     @Query("DELETE FROM post_table")
     fun clear()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(comments: Comments)
+
+    @Update
+    fun update(comments: Comments)
 
 
 }

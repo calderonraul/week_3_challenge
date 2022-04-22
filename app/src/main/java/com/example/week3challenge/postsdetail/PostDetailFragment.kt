@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import com.example.week3challenge.databinding.PostDetailFragmentBinding
+import com.example.week3challenge.posts.PostsViewModelFactory
 
 
 class PostDetailFragment : Fragment() {
@@ -30,7 +31,7 @@ class PostDetailFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = ViewModelProvider(
             this,
-            PostDetailViewModelFactory(sharedPreferences.getInt("id", 0))
+            PostDetailViewModelFactory(sharedPreferences.getInt("id", 0),requireActivity().application)
         )[PostDetailViewModel::class.java]
 
 
