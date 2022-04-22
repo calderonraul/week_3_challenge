@@ -9,7 +9,7 @@ import com.example.week3challenge.postsdetail.PostsDetailsAdapter
 
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Posts>?) {
+fun bindRecyclerView (recyclerView: RecyclerView, data: List<Posts>?) {
     val adapter = recyclerView.adapter as PostsAdapter
     adapter.submitList(data)
 }

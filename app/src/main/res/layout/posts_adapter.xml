@@ -3,89 +3,88 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="posts"
             type="com.example.week3challenge.networking.Posts" />
     </data>
 
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardElevation="10dp"
-    app:cardMaxElevation="12dp"
-    app:cardCornerRadius="20dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true"
-    >
-
-
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/cardview_layout_margin"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_maximus_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/postIDTV"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                android:text="@{Integer.toString(posts.userId)}"
-                android:textAlignment="center"
-                android:layout_weight="1">
-            </TextView>
+                <TextView
+                    android:id="@+id/postIDTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:text="@{Integer.toString(posts.userId)}"
+                    android:textAlignment="center"></TextView>
 
 
-            <TextView
-                android:id="@+id/IDTV"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/IDTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{Integer.toString(posts.id)}"
+                    android:textAlignment="center"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(posts.id)}"
-                android:textAlignment="center"
-                android:layout_weight="1">
-            </TextView>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/postTitleTV"
+                    android:layout_width="@dimen/empty_dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/text_padding"
+                    android:text="@{posts.title}"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/postBodyTV"
+                    android:layout_width="@dimen/empty_dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{posts.body}"
+                    android:textAlignment="center"></TextView>
+
+
+            </LinearLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:paddingStart="5dp"
-                android:id="@+id/postTitleTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:textStyle="bold"
-                android:text="@{posts.title}"
-                android:layout_weight="1">
-            </TextView>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/postBodyTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{posts.body}"
-                android:textAlignment="center"
-                android:layout_weight="1">
-            </TextView>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

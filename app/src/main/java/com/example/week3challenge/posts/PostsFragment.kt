@@ -35,12 +35,13 @@ class PostsFragment : Fragment() {
 
         binding.viewModel = ViewModelProvider(this, modelfactory).get(PostsViewModel::class.java)
 
+
         binding.recycler.adapter = PostsAdapter(PostsAdapter.OnClickListener {
             viewModel.displayPostComments(it)
             val editor = sharedPreferences.edit()
             editor.putInt("id", it.id)
             editor.apply()
-            Log.wtf("ravnn", "guarde el id" + it.id.toString())
+            //Log.wtf("ravnn", "guarde el id" + it.id.toString())
 
         })
         viewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {

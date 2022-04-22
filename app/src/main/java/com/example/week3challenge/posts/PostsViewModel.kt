@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.week3challenge.database.PostsDatabase
 import com.example.week3challenge.networking.Posts
 import com.example.week3challenge.networking.PostsApi
@@ -24,6 +25,7 @@ class PostsViewModel(var application: Application) : ViewModel() {
 
     private val _postinfo = MutableLiveData<List<Posts>>()
 
+
     val posties: LiveData<List<Posts>>
         get() = _postinfo
 
@@ -34,6 +36,7 @@ class PostsViewModel(var application: Application) : ViewModel() {
 
 
     init {
+
         getPosts()
     }
 
@@ -41,7 +44,7 @@ class PostsViewModel(var application: Application) : ViewModel() {
         viewModelScope.launch {
             try {
                 val listResult = PostsApi.retrofitService.getPosts()
-                Log.wtf("ravn", listResult.toString())
+                //Log.wtf("ravn", listResult.toString())
                 _status.value = "Success: ${listResult.size} posts retrieved"
                 if (listResult.isNotEmpty()) {
                     _postinfo.value = listResult

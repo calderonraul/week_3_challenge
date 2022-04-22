@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_padding">5dp</dimen>
+    <dimen name="cardview_layout_margin">10dp</dimen>
+    <dimen name="corner_radius">20dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_maximus_elevation">12dp</dimen>
+    <dimen name="recycler_padding">6dp</dimen>
+    <dimen name="empty_dp">0dp</dimen>
+
+</resources>

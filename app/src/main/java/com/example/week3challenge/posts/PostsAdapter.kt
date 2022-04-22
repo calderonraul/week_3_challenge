@@ -38,8 +38,6 @@ class PostsAdapter(val onClickListener: OnClickListener) :
 
         holder.itemView.setOnClickListener {
             onClickListener.onClick(posts)
-
-
         }
 
         holder.bind(posts)
