@@ -11,7 +11,11 @@
         tools:layout="@layout/posts_fragment" >
         <action
             android:id="@+id/action_showDetail"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            >
+
+
+        </action>
     </fragment>
 
     <fragment
@@ -21,9 +25,10 @@
         android:name="com.example.week3challenge.postsdetail.PostDetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/post_detail_fragment">
-        <argument
-            android:name="selectedPost"
-            app:argType="com.example.week3challenge.networking.Posts"/>
+        <argument android:name="postId"
+            app:argType="string"
+            app:nullable="true"
+            />
     </fragment>
 
 </navigation>

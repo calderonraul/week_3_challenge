@@ -46,7 +46,7 @@ class PostsFragment : Fragment() {
         })
         viewModel.navigateToSelectedPost.observe(viewLifecycleOwner, Observer {
             if (null != it) {
-                this.findNavController().navigate(PostsFragmentDirections.actionShowDetail(it))
+                this.findNavController().navigate(PostsFragmentDirections.actionShowDetail(it.id.toString()))
                 viewModel.displayPostDetailsComplete()
             }
         })

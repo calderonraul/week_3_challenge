@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.example.week3challenge.databinding.PostDetailFragmentBinding
 import com.example.week3challenge.posts.PostsViewModelFactory
 
@@ -18,7 +19,7 @@ class PostDetailFragment : Fragment() {
         ViewModelProvider(this).get(PostDetailViewModel::class.java)
     }
     lateinit var sharedPreferences: SharedPreferences
-
+    private val postArgs: PostDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,10 +30,13 @@ class PostDetailFragment : Fragment() {
 
 
         binding.lifecycleOwner = this
-        binding.viewModel = ViewModelProvider(
-            this,
-            PostDetailViewModelFactory(sharedPreferences.getInt("id", 0),requireActivity().application)
-        )[PostDetailViewModel::class.java]
+        postArgs.postId?.let { id ->
+            binding.viewModel = ViewModelProvider(
+                this,
+                PostDetailViewModelFactory(id.toInt(), requireActivity().application)
+            )[PostDetailViewModel::class.java]
+        }
+
 
 
 
